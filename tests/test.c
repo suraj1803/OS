@@ -7,21 +7,34 @@ void separate_tokens(char* input, char* dest[], int size) {
   char* str = malloc(30);
   int idx = 0;
   int i = 0;
-  for (int i = 0; i < 100; i++) {
+  int IN = 0;
+  int OUT = 1;
+  while (token < size - 1) {
     if (input[i] == ' ' || input[i] == '\n') {
-      str[idx] = '\0';
-      dest[token] = malloc(strlen(str) + 1);
-      strcpy(dest[token], str);
-      idx = 0;
-      token++;
-      if (input[i] == '\n') {
-        break;
+      if (IN && !OUT) {
+        str[idx] = '\0';
+        dest[token] = malloc(strlen(str) + 1);
+        strcpy(dest[token], str);
+        idx = 0;
+        token++;
+        IN = 0;
+        OUT = 1;
+        if (input[i] == '\n') {
+          break;
+        }
       }
+        if (input[i] == '\n') {
+          break;
+        }
     }
     else {
+      OUT = 0;
+      IN = 1;
       str[idx] = input[i];
       idx++;
     }
+
+    i++;
   }
 
   dest[token] = NULL;
