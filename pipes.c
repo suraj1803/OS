@@ -7,7 +7,11 @@
 int main() {
   int pipefds[2]; // Array to hold the file descriptors for the pipe
   pid_t pid;
-  char write_msg[] = "Hello from parent!";
+  char *write_msg = malloc(100);
+  printf("Enter a message to child process: ");
+  size_t size = 100;
+  getline(&write_msg, &size, stdin);
+
   char read_msg[100];
 
   // Create the pipe
@@ -44,6 +48,8 @@ int main() {
     // Wait for the child to finish (optional)
     wait(NULL);
   }
+
+  free(write_msg);
 
   return 0;
 }

@@ -1,2 +1,1 @@
-gcc -o producer producer.c
-gcc -o consumer consumer.c
+gcc -o shell shell.c -Wall
