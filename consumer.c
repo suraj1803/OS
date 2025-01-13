@@ -8,7 +8,7 @@
 int main()
 {
   const int SIZE = 4096;
-  const char *name = "SURAJ";
+  const char *name = "OS";
   int fd;
   char *ptr;
 
