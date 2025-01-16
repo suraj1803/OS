@@ -23,7 +23,7 @@ int main() {
     char input[MAX_LINE];
     fgets(input, MAX_LINE, stdin);
 
-    int tokens = separate_tokens(input, args, arg_len);
+    separate_tokens(input, args, arg_len);
 
     if (strcmp(args[0], "exit") == 0) {
       should_run = 0;
